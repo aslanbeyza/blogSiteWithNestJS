@@ -36,5 +36,4 @@ export class AuthService {
       if(!isMatch)throw new UnauthorizedException('wrong password');
       return this.createToken(user.email);
     }
-    
 }

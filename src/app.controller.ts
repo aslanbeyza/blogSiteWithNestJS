@@ -10,6 +10,7 @@ export class AppController {
   @UseGuards(AuthGuard('jwt'))
   @Get()
   getHello(@Request() req:any): string {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     console.log("payload",req.user);
     return this.appService.getHello();
   }
