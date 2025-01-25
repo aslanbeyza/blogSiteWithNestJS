@@ -1,5 +1,5 @@
-![image](https://github.com/user-attachments/assets/11572a6a-06c8-4cb9-82a7-82cbec64041e)
-![image](https://github.com/user-attachments/assets/848fbc6c-a6db-495d-9e15-9457f52f3bca)
+![image](https://github.com/user-attachments/assets/4f828bce-8250-48bb-b9f3-573537ff04ca)
+![image](https://github.com/user-attachments/assets/b73f2073-b59b-4c3c-8083-0e5a2a15bb39)
 nest g module auth 
 nest g controller  auth --no-spec 
 nest g service  auth --no-spec   
