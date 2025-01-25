@@ -1,5 +1,5 @@
-import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { HydratedDocument } from "mongoose";
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { HydratedDocument } from 'mongoose';
 
 export type BlogDocument = HydratedDocument<Blog>;
 /* Şemayı hazırladığın gibi git blog modul kısmına import */
@@ -12,11 +12,11 @@ export class Blog {
   @Prop()
   content: string;
 
-    @Prop()
-    sharedBy: string;
+  
+  @Prop()
+  sharedBy: string; /* buraya kulanıcının emailini koyalım */
 
-    @Prop()
-    userId:string;
-
+  @Prop()
+  userId: string; /* buraya kulanıcının id sini koyalım */
 }
 export const BlogSchema = SchemaFactory.createForClass(Blog);
