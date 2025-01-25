@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { Blog, BlogDocument } from './schemas/blog.schema';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
@@ -32,11 +32,13 @@ export class BlogsService {
   }
   /* Napcaz id göndericez bide kullanıcının girmiş oldugu tüm objeyi yollucaz dimi */
   async updateBlog(dto: BlogDto, id: string) {
-    return await this.blogModel.findByIdAndUpdate(id, dto, {
-      new: true,
-    }); /*{new: true} bunu demezsen eski halini döndürür  */
+    const blog = await this.blogModel.findById(id);
+    if (blog?.userId !== dto.userId) throw new UnauthorizedException("Bu blogu sadece sahibi güncelleyebilir");
+    return await this.blogModel.findByIdAndUpdate(id, dto, {new: true,}); /*{new: true} bunu demezsen eski halini döndürür  */
   }
-  async removeBlog(id: string) {
+  async removeBlog(id: string , dto: BlogDto) {
+    const blog = await this.blogModel.findById(id);
+    if (blog?.userId !== dto.userId) throw new UnauthorizedException("Bu blogu sadece sahibi silebilir");
     return await this.blogModel.findByIdAndDelete(id);
   }
   async getAllBlogs() {

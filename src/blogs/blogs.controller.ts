@@ -22,9 +22,9 @@ export class BlogsController {
     }
     @UseGuards(AuthGuard('jwt')) 
     @Delete(':id')
-    removeBlog( @Param('id') id: string) {
+    removeBlog( @Param('id') id: string, @Body() dto: BlogDto) {
         console.log("id delete", id);
-        return this.blogsService.removeBlog( id);
+        return this.blogsService.removeBlog(id, dto);
     }
     @Get()
     getAllBlogs() {
@@ -43,7 +43,7 @@ export class BlogsController {
     getOneBlog(@Param('id') id: string) {
         return this.blogsService.getOneBlog(id);
     }
-    
+
 
 
 

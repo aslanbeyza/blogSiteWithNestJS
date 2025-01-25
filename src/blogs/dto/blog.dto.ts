@@ -1,6 +1,7 @@
 export class BlogDto {
     title: string;
     content: string;
+    userId?: string;
 }
 
 /* Bu kısımda şemada 4 şey belirttik burda niye 2 derseniz eğer 
